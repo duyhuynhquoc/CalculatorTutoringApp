@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <!--    Calculation Text-->
+    <TextView
+        android:id="@+id/inputTV"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="#efefef"
+        android:gravity="right|bottom"
+        android:padding="8dp"
+        android:text=""
+        android:textSize="48sp" />
+
+    <!--    Keyboard-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_ac"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onAllClear"
+            android:text="AC" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_opposite"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="+/–" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_percent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="%" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_divide"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="÷" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onDigit"
+            android:text="7" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onDigit"
+            android:text="8" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onDigit"
+            android:text="9" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_multiply"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onMultiply"
+            android:text="×" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onDigit"
+            android:text="4" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onDigit"
+            android:text="5" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onDigit"
+            android:text="6" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_minus"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onMinus"
+            android:text="–" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onDigit"
+            android:text="1" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onDigit"
+            android:text="2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onDigit"
+            android:text="3" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_plus"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onAdd"
+            android:text="+" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_0"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="0" />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_decimal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="." />
+
+        <com.google.android.material.button.MaterialButton
+            android:insetTop="4dp"
+            android:insetBottom="4dp"
+            android:insetLeft="4dp"
+            android:insetRight="4dp"
+            android:id="@+id/btn_equal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onEqual"
+            android:text="=" />
+    </LinearLayout>
+
+</LinearLayout>
