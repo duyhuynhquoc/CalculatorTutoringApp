@@ -13,60 +13,64 @@ class MainActivity : AppCompatActivity() {
     var result: Double = 0.0;
     var inputNumber: Double = 0.0;
 
-    var isFirstNumber: Boolean = true;
     var isOperatorPressed: Boolean = false;
+    var isEqualPressed: Boolean = false;
 
-    var lastOperator: String = "";
+    var lastOperator: String = "+";
     var lastNumber: Double = 0.0;
-    var lastAddOrMinus: String = "";
+    var lastAddOrMinus: String = "+";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         inputTV = findViewById(R.id.inputTV);
+
+        supportActionBar?.hide();
     }
 
-    fun onAllClear(view: View){
+    fun onAllClear(view: View) {
         inputTV?.text = "";
-
-        result = 0.0;
         inputNumber = 0.0;
-        isFirstNumber = true;
-        isOperatorPressed = false;
 
-        lastOperator = ""
-        lastNumber = 0.0
-        lastAddOrMinus = ""
+        reset();
+
+        isOperatorPressed = false;
+        isEqualPressed = false;
     }
 
     fun onDigit(view: View) {
         if (isOperatorPressed) {
             inputTV?.text = "";
         }
+
         isOperatorPressed = false;
 
         inputTV?.append((view as Button).text);
+        isEqualPressed = false;
     }
 
     fun calculateAddMinusEqual() {
-        if (isFirstNumber) {
+        if (lastOperator == "+") {
             result += inputNumber;
-            isFirstNumber = false;
-        } else {
-            if (lastOperator == "+") {
-                result += inputNumber;
-            } else if (lastOperator == "-") {
-                result -= inputNumber;
-            } else if (lastOperator == "*") {
-                lastNumber *= inputNumber;
+        } else if (lastOperator == "-") {
+            result -= inputNumber;
+        } else if (lastOperator == "*") {
+            lastNumber *= inputNumber;
 
-                if (lastAddOrMinus == "+") {
-                    result += lastNumber;
-                } else {
-                    result -= lastNumber;
-                }
+            if (lastAddOrMinus == "+") {
+                result += lastNumber;
+            } else {
+                result -= lastNumber;
             }
+        }
+    }
+
+    fun calculateMultiplyDivide() {
+        if (lastOperator == "*") {
+            lastNumber *= inputNumber;
+        } else if (lastOperator == "/") {
+            lastNumber /= inputNumber
         }
     }
 
@@ -74,7 +78,7 @@ class MainActivity : AppCompatActivity() {
     fun onAdd(view: View) {
         isOperatorPressed = true;
 
-        inputNumber = inputTV?.text.toString().toDouble();
+        getInputNumber();
 
         calculateAddMinusEqual();
 
@@ -82,12 +86,13 @@ class MainActivity : AppCompatActivity() {
         lastAddOrMinus = "+";
 
         inputTV?.text = result.toString();
+        isEqualPressed = false;
     }
 
     fun onMinus(view: View) {
         isOperatorPressed = true;
 
-        inputNumber = inputTV?.text.toString().toDouble();
+        getInputNumber();
 
         calculateAddMinusEqual();
 
@@ -95,31 +100,51 @@ class MainActivity : AppCompatActivity() {
         lastAddOrMinus = "-";
 
         inputTV?.text = result.toString();
+        isEqualPressed = false;
     }
 
     fun onMultiply(view: View) {
         isOperatorPressed = true;
 
-        inputNumber = inputTV?.text.toString().toDouble();
+        getInputNumber();
 
-        if (lastOperator == "+" || lastOperator == "-") {
-            lastNumber = inputNumber;
-        } else {
-            lastNumber *= inputNumber;
-        }
+        if (lastOperator == "+" || lastOperator == "-") lastNumber =
+            inputNumber;
+
+        calculateMultiplyDivide()
 
         lastOperator = "*";
         inputTV?.text = lastNumber.toString();
+
+        isEqualPressed = false;
     }
 
     fun onEqual(view: View) {
         isOperatorPressed = true;
 
-        inputNumber = inputTV?.text.toString().toDouble();
-        Log.i("number", inputNumber.toString());
+        if (!isEqualPressed) {
+            inputNumber = inputTV?.text.toString().toDouble();
+        }
 
         calculateAddMinusEqual();
 
         inputTV?.text = result.toString();
+        isEqualPressed = true;
+
+        reset();
+    }
+
+    fun getInputNumber() {
+        if (!isEqualPressed) {
+            inputNumber = inputTV?.text.toString().toDouble();
+        }
+    }
+
+    fun reset() {
+        inputNumber = result;
+        result = 0.0;
+        lastNumber = 0.0;
+        lastOperator = "+";
+        lastAddOrMinus = "+"
     }
 }
